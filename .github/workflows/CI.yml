@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
         with:
         # Fetch all commits
-        fetch-depth: 0
+          fetch-depth: 0
         
       - name: Sematic versioning
         id: versioning
