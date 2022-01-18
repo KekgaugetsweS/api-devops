@@ -50,7 +50,7 @@ jobs:
           tag_name: ${{ steps.versioning.outputs.version }}
           release_name: ${{ steps.versioning.outputs.version }}
           prerelease: true
-        
+      - name: Check out
         uses: actions/checkout@v2
         with:
         # Fetch all commits
