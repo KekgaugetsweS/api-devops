@@ -7,7 +7,7 @@ on:
 
 env:
   DOCKER_USERNAME: kekgaugetswe
-  REPO: kekgaugtswe/doosyapiii
+  REPO: kekgaugetswe/doosyapiii
 
 jobs:
 
