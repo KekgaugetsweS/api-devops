@@ -21,11 +21,11 @@ jobs:
     
     - name: Set enviroment variables
       run: |
-        cat >> $GITHUN_ENV << EOF
+        cat >> $GITHUB_ENV << EOF
         VERSION-${GITHUB_REF##*/}
         EOF
     
-    - name: Login to Dockerhub
+    - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
           username: ${{env.DOCKER_USERNAME }}
