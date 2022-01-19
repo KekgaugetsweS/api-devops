@@ -1,23 +1,21 @@
 name: release
-
 on:
   push:
     tags:
       -'v*'
-
 env:
   DOCKER_USERNAME: kekgaugetswe
   REPO: kekgaugetswe/doosyapiii
 
 jobs:
-
-  docker:
+ docker:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+         fetch-depth: 0
     
     - name: Set enviroment variables
       run: |
@@ -35,8 +33,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ env.VERSION }}
-        file: ./Doosy.API/Dockerfile 
+        tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ env.VERSION }} 
         
     - name: testing doosy-deploy ssh connection
       uses: appleboy/ssh-action@master
