@@ -23,7 +23,7 @@ jobs:
         
       - name: Sematic versioning
         id: versioning
-        uses: PaulHatch/semantic-version@v4.0.3
+        uses: PaulHatch/semantic-version@v4.0.2
         with: 
           branch: main
           tag_prefix: "v"
