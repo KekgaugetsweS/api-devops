@@ -36,3 +36,23 @@ jobs:
           push: true
           tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ env.VERSION }}
           file: ./Doosy.API/Dockerfile 
+          
+      - name: testing doosy-deploy ssh connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST}}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+             if [[ "$(docker images -q kekgaugetswe/doosyiii:latest 2> /dev/null)" == "" ]]; then
+               # do something 
+              docker create --name doosyapiii  -p 5007:80 kekgaugetswe/doosyapiii:latest
+              docker start doosyapiii
+             else
+                docker kill doosyapiii;
+                docker rm doosyapiii;
+                docker create --name doosyapiii  -p 5007:80 kekgaugetswe/doosyapiii:latest;
+                docker start doosyapiii;
+             fi
+             docker ps -a
