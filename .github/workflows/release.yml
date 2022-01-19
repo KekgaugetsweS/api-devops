@@ -35,7 +35,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ env.REPO }}:latest.${{ env.REPO }}:${{ env.VERSION }}
+        tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ env.VERSION }}
         file: ./Doosy.API/Dockerfile 
         
     - name: testing doosy-deploy ssh connection
