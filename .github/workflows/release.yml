@@ -1,0 +1,39 @@
+name: Docker Image CI
+
+on:
+  push:
+    tags:
+      -'v*'
+
+env:
+  DOCKER_USERNAME: kekgaugetswe
+  REPO: kekgaugtswe/doosyapiii
+
+jobs:
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    
+    - name: Set enviroment variables
+      run: |
+        cat >> $GITHUN_ENV << EOF
+        VERSION-${GITHUB_REF##*/}
+        EOF
+    
+    - name: Login to Dockerhub
+      uses: docker/login-action@v1
+      with:
+          username: ${{env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: ${{ env.REPO }}:latest.${{ env.REPO }}:${{ env.VERSION }}
+        file: ./Doosy.API/Dockerfile 
