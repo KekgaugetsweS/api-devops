@@ -2,8 +2,8 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-
+EXPOSE 80   
+ 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Doosy.API/Doosy.API.csproj", "Doosy.API/"]
@@ -12,7 +12,7 @@ COPY ["Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.D
 COPY ["Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Infrastructure/"]
 COPY ["Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure.csproj", "Doosy.Framework.Infrastructure/"]
 RUN dotnet restore "Doosy.API/Doosy.API.csproj"
-COPY . .
+COPY . . 
 WORKDIR "/src/Doosy.API"
 RUN dotnet build "Doosy.API.csproj" -c Release -o /app/build
 

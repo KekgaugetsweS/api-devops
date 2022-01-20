@@ -14,7 +14,7 @@ builder.Services.AddDomain();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -22,6 +22,7 @@ app.UseSwaggerUI();
 //{
     
 //}
+
 
 app.UseCors(builders => builders.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
