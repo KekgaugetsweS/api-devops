@@ -40,7 +40,7 @@ jobs:
           #if [  "$(docker ps  -a -f status=running  -f  name=doosyapi)" ]; then
             #docker kill doosyapi;
             #docker rm doosyapi;
-            docker create --name doosyapi  -p 5006:80 kekgaugetswe/doosyapi:latest
+            docker create --name doosyapi  -p 5004:80 kekgaugetswe/doosyapi:latest
             docker start doosyapi
           #fi
           docker ps -a
