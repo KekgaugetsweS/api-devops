@@ -45,14 +45,10 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-             if [[ "$(docker images -q kekgaugetswe/doosyiii:latest 2> /dev/null)" == "" ]]; then
-               # do something 
-              docker create --name doosyapiii  -p 5006:80 kekgaugetswe/doosyapiii:${{ env.VERSION }};
+            #if [  "$(docker ps  -a -f status=running  -f  name=doosyapiii)" ]; then
+              #docker kill doosyapiii;
+              #docker rm doosyapiii;
+              docker create --name doosyapiii  -p 5006:80 kekgaugetswe/doosyapiii:${{ env.VERSION }}
               docker start doosyapiii
-             else
-                docker kill doosyapiii;
-                docker rm doosyapiii;
-                docker create --name doosyapiii  -p 5006:80 kekgaugetswe/doosyapiii:${{ env.VERSION }};
-                docker start doosyapiii;
-             fi
-             docker ps -a
+            #fi
+            docker ps -a
