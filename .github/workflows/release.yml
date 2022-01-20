@@ -47,12 +47,12 @@ jobs:
           script: |
              if [[ "$(docker images -q kekgaugetswe/doosyiii:latest 2> /dev/null)" == "" ]]; then
                # do something 
-              docker create --name doosyapiii  -p 5007:80 kekgaugetswe/doosyapiii:${{ steps.versioning.outputs.version }};
+              docker create --name doosyapiii  -p 5006:80 kekgaugetswe/doosyapiii:${{ env.VERSION }};
               docker start doosyapiii
              else
                 docker kill doosyapiii;
                 docker rm doosyapiii;
-                docker create --name doosyapiii  -p 5007:80 kekgaugetswe/doosyapiii:${{ steps.versioning.outputs.version }};
+                docker create --name doosyapiii  -p 5006:80 kekgaugetswe/doosyapiii:${{ env.VERSION }};
                 docker start doosyapiii;
              fi
              docker ps -a
