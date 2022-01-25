@@ -2,8 +2,11 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
+<<<<<<< HEAD
 EXPOSE 80
 
+ 
+>>>>>>> a60590bc87332c0c2149614c957e14bad45054b6
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Doosy.API/Doosy.API.csproj", "Doosy.API/"]
